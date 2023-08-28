@@ -4,7 +4,11 @@ const CourseSchema = new mongoose.Schema({
     title: {
         type:String,
         required:true
-    },
+    }, 
+    slug: {
+        type:String,
+        required:true
+    }, 
     description: {
         type:String,
         required:true
@@ -32,7 +36,7 @@ const CourseSchema = new mongoose.Schema({
             ref: 'assignments'
         }
     ],
-    startdate: {
+    startDate: {
         type: Date,
         default: Date.now
     },
