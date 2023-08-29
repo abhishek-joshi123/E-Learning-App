@@ -8,7 +8,7 @@ const ModuleSchema = new mongoose.Schema({
     lessons: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'lessons'
+            ref: 'lessons' 
         }
     ],
     assessment: {

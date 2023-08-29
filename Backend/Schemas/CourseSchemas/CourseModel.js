@@ -13,13 +13,28 @@ const CourseSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    //   thumbnail.
+    thumbnail: {
+        fileName: {
+            type: String,
+            required: true
+        },
+        fileSize: {
+            type: Number,
+            required: true
+        },
+        assetURL: {
+            type: String,
+        },
+        assetPublicId: {
+            type: String
+        }
+    },
     instructor: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
-    students: [
-        {
+    students: [ 
+        { 
             type: mongoose.Schema.Types.ObjectId,
             ref: 'users'
         }

@@ -11,10 +11,25 @@ const LessonSchema = new mongoose.Schema({
             ref: 'contents'
         }
     ],
-    // vedio..
+    video: {
+        fileName: {
+            type: String,
+            required: true
+        },
+        fileSize: {
+            type: Number,
+            required: true
+        },
+        assetURL: {
+            type: String,
+        },
+        assetPublicId: {
+            type: String
+        }
+    },
 },{
     timestamps:true
 })
 
-export default mongoose.model('lessons', LessonSchema)
+export default mongoose.model('lessons', LessonSchema) 
  

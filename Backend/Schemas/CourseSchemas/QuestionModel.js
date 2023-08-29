@@ -16,7 +16,7 @@ const questionSchema = new mongoose.Schema({
             type:String,
             required: true
            },
-           isCorrect: {
+           isCorrect: { 
             type: Boolean,
             default:false
            }

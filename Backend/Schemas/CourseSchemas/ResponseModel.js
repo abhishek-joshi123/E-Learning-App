@@ -8,8 +8,8 @@ const ResponseSchema = new mongoose.Schema({
     },
     score: {
         type: Number,
-        default: 0
-    },
+        default: 0  
+    }, 
     answers: [
         {
             question : {
@@ -17,7 +17,7 @@ const ResponseSchema = new mongoose.Schema({
                 ref: 'questions'
             },
             answer: {
-                type:string,
+                type:String,
                 default: ''
             }
         }
@@ -26,5 +26,5 @@ const ResponseSchema = new mongoose.Schema({
     timestamps:true
 })
 
-export default mongoose.model('assessments', ResponseSchema)
+export default mongoose.model('responses', ResponseSchema)
  

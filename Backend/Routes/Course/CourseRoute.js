@@ -1,4 +1,4 @@
-
+import upload from '../../Middleware/Multer.js'
 import {Router} from 'express'
 import { iSTeacher, requireSignIn } from '../../Middleware/FetchUser.js'
 import { createCourseController, enrollStudentsController, getCoursesController } from '../../Controllers/Course/CourseController.js'
@@ -13,7 +13,7 @@ router.post('/create-Course', requireSignIn, iSTeacher,[
     body('description', 'enter a valid description').isLength({min: 3}),
     body('startDate', 'enter a valid startdate').isDate(),
     body('endDate', 'enter a valid endDate').isDate()
-], createCourseController)
+], upload.single('thumbnail') ,createCourseController) 
 
 // get all courses...
 router.get('/get-all-courses', getCoursesController);

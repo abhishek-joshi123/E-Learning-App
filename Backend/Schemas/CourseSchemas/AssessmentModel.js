@@ -14,7 +14,7 @@ const assessmentSchema = new mongoose.Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'questions'
-        }
+        } 
     ],
     maxScore: {
         type: Number,
