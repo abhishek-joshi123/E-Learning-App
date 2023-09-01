@@ -41,10 +41,10 @@ const CourseSchema = new mongoose.Schema({
     ],
     modules: [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId, 
             ref: 'modules'
         }
-    ],
+    ],  
     assignments: [
         {
             type: mongoose.Schema.Types.ObjectId,

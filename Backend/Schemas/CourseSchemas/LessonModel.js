@@ -14,11 +14,11 @@ const LessonSchema = new mongoose.Schema({
     video: {
         fileName: {
             type: String,
-            required: true
+            // required: true
         },
         fileSize: {
             type: Number,
-            required: true
+            // required: true 
         },
         assetURL: {
             type: String,

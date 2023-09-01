@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
 const ModuleSchema = new mongoose.Schema({
-    title: {
+    title: { 
         type:String,
         required:true
     },
@@ -16,7 +16,7 @@ const ModuleSchema = new mongoose.Schema({
         ref: 'assessments'
     }
 },{
-    timestamps:true
+    timestamps:true 
 })
 
 export default mongoose.model('modules', ModuleSchema)

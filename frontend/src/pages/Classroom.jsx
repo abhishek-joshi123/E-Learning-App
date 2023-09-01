@@ -9,6 +9,8 @@ export default function Classroom() {
   const [recordedUrl, setRecordedUrl] = useState(null);
 
   async function startRecording() {
+
+    let url;
     try {
       const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
       setRecordedChunks([]);
@@ -22,12 +24,15 @@ export default function Classroom() {
 
       recorder.onstop = () => {
         const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' });
-        const url = URL.createObjectURL(recordedBlob);
-        console.log(url);
+        url = URL.createObjectURL(recordedBlob);
+        // console.log(url);
         setRecordedChunks([]);
         setMediaRecorder(null);
         setRecording(false);
-        setRecordedUrl(url);
+        setRecordedUrl(url.slice(27,url.length));
+        console.log(url);
+        console.log(url.slice(27,url.length-1));
+        
       };
 
       setMediaRecorder(recorder);
@@ -39,15 +44,14 @@ export default function Classroom() {
   } 
 
   function stopRecording() {
-    if (mediaRecorder && mediaRecorder.state === 'recording') {
-      mediaRecorder.stop();
-    }
-    console.log(url);
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+          mediaRecorder.stop();
+      }
   }
 
   return (
     <div>
-      {/* <video id="recordedScreen" controls src={recordedUrl}></video> */}
+      <video id="recordedScreen" controls src={recordedUrl}></video>
       <button onClick={startRecording} disabled={recording}>
         Start Recording
       </button>

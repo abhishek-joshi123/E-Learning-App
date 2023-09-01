@@ -7,6 +7,6 @@ import upload from '../../Middleware/Multer.js'
 
 router.post('/create-assignment/:id', requireSignIn, upload.single('assignment'), createAssignmentController)
 
-router.get('/get-assignment-pdf/:id', requireSignIn, getassignmentpdfController)
+router.get('/get-assignment-pdf/:id', requireSignIn, getassignmentpdfController) 
 
  export default router

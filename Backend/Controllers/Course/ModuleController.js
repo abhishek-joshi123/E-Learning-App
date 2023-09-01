@@ -10,7 +10,7 @@ export const createModuleController = async(req, res) => {
             return res.status(400).send({
                 success:false,
                 message: 'Enter a valid title'
-            })
+            }) 
         }
             
         const {id} = req.params;
@@ -39,4 +39,24 @@ export const createModuleController = async(req, res) => {
             error
         })
     }
+}
+
+export const getLessonController = async(req, res) => {
+    try {
+        const ModuleId = req.params.id;
+        const Module = await ModuleModel.findById(ModuleId).populate('lessons')
+        const Lessons = Module.lessons
+        res.status(200).send({
+            success: true,
+            message: 'lessons found successfully',
+            Lessons
+        })
+    } catch (error) {
+        res.status(404).send({
+            success: false,
+            message: 'Error in finding lessons',
+            error
+        }) 
+    }
+
 }

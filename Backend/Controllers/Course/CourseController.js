@@ -95,3 +95,62 @@ export const enrollStudentsController = async(req, res) => {
         })
     }
 }
+
+export const getSingleCourseController = async(req, res) => {
+
+    try {
+        const CourseId = req.params.id;
+        const Course = await CourseModel.findById(CourseId);
+        res.status(200).send({
+            success: true,
+            message: 'course found successfully',
+            Course
+        })
+    } catch (error) {
+        res.status(404).send({
+            success: false,
+            message: 'Error in enrolling students',
+            error
+        })
+    }
+}
+
+export const getModuleController = async(req, res) => {
+
+    try {
+        const CourseId = req.params.id;
+        const Course = await CourseModel.findById(CourseId).populate('modules')
+        const modules = Course.modules
+        res.status(200).send({
+            success: true,
+            message: 'module found successfully',
+            modules
+        })
+    } catch (error) {
+        res.status(404).send({
+            success: false,
+            message: 'Error in finding modules',
+            error
+        })
+    }
+}
+
+export const getAssignmentController = async(req, res) => {
+
+    try {
+        const CourseId = req.params.id;
+        const Course = await CourseModel.findById(CourseId).populate('assignments')
+        const assignments = Course.assignments
+        res.status(200).send({
+            success: true,
+            message: 'assignments found successfully',
+            assignments
+        })
+    } catch (error) {
+        res.status(404).send({
+            success: false,
+            message: 'Error in finding assignments',
+            error
+        })
+    }
+}

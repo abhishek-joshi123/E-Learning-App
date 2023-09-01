@@ -9,7 +9,7 @@ const ContentSchema = new mongoose.Schema({
     explanation: {
         type:String,
         required:true
-    }
+    } 
 },{
     timestamps:true
 })

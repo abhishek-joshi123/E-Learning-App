@@ -10,7 +10,7 @@ const AssignmentSchema = new mongoose.Schema({
         required:true
     },
     assignment: {
-        fileName: {
+        fileName: { 
             type: String,
             required: true
         },

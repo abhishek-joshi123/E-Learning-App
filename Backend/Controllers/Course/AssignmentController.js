@@ -23,7 +23,7 @@ import CourseModel from "../../Schemas/CourseSchemas/CourseModel.js"
         const {originalname, size} = req.file
         const options = {
             resource_type: "auto",
-            allowed_formats: [
+            allowed_formats: [ 
                 'pdf'
             ],
             folder: 'course assignments' 
