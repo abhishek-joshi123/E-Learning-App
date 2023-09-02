@@ -22,10 +22,10 @@ const Photo = () => {
 
 
   return (
-    <div>
-      <h2 className="mb-5 text-center">
-        React Photo Capture using Webcam Examle
-      </h2>
+    <div className='flex flex-col justify-center items-center'>
+      <h1 className="m-5 text-center text-white text-xl">
+        Photo Capture
+      </h1>
       <div>
         {image == '' ? (
           <Webcam
@@ -46,12 +46,12 @@ const Photo = () => {
               e.preventDefault()
               capture()
             }}
-            className="btn btn-danger"
+            className="bg-green-400 text-white m-4 px-4 py-3 rounded-lg"
           >
             Capture
           </button>
+          <button onClick={() => {navigate('/SignUp')}}className='bg-green-400 text-white px-4 py-3 rounded-lg' >Back to SignIn</button>
       </div>
-          <button onClick={() => {navigate('/SignUp')}}>Back to SignIn</button>
     </div>
   )
 }
