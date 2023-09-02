@@ -3,21 +3,21 @@ import { useDropzone } from 'react-dropzone'
 import {MdNavigateNext} from 'react-icons/md'
 
 
-export default function Addvideo(props) {
+export default function Dropzone(props) {
 
-  const {video, setvideo} = props;
-  const [Videoname, setVideoname] = useState('No file choosen')
+  const {pdf, setPdf} = props;
+  const [pdfName, setPdfName] = useState('No file choosen')
   const [Click, setClick] = useState(false)
 
   const onDrop = useCallback(acceptedFiles => {
-      setvideo(acceptedFiles[0])
-      setVideoname(acceptedFiles[0].name)
+      setPdf(acceptedFiles[0])
+      setPdfName(acceptedFiles[0].name)
   }, [])
 
 
   const {acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept:{
-      'video/mp4':['.mp4']
+      'application/pdf':['.pdf'],
     },
     maxFiles:1,
     maxSize:10000000,
@@ -27,18 +27,18 @@ export default function Addvideo(props) {
   return (
     <div className='outline cursor-pointer'>
           
-      <section className='dropzone-video'> 
+      <section className='dropzone-pdf'> 
         <div {...getRootProps()}>
         <input {...getInputProps()} required/>
-          <p>Drag and drop your Video here</p>
+          <p>Drag and drop your image here</p>
           <p>Or, <strong>browse to upload</strong></p>
       </div>
       </section>
       <div className="cursor-pointer">
-          <span onClick={() => {setClick(!Click)}}>{Videoname}</span>
-          {video && <MdNavigateNext onClick={() => {setClick(!Click)}} style={Click ? {transform: "rotate(-90deg)"} : {transform: "rotate(90deg)"}}/>}
-          {Click && video && <div className="w-[100px] h-24">
-              <video src={URL.createObjectURL(video)} alt="video" />
+          <span onClick={() => {setClick(!Click)}}>{pdfName}</span>
+          {pdf && <MdNavigateNext className='ShowPdf' onClick={() => {setClick(!Click)}} style={Click ? {transform: "rotate(-90deg)"} : {transform: "rotate(90deg)"}}/>}
+          {Click && pdf && <div className="w-[100px] h-24">
+            <iframe src={URL.createObjectURL(pdf)}></iframe>
           </div>}
       </div> 
     </div>

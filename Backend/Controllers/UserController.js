@@ -13,7 +13,6 @@ export const registercontroller = async(req, res) => {
         if(!errors.isEmpty()){
             return res.status(400).json({success:false, Esuccess:true, errors: errors.array()});
         }
-
         
         try {
             const {name, email, password, role} = req.body;

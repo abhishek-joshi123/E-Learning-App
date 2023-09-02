@@ -4,7 +4,6 @@ import {MdNavigateNext} from 'react-icons/md'
 
 
 export default function AddImage(props) {
-
   const {Image, setImage} = props;
   const [ImageName, setImageName] = useState('No file choosen')
   const [Click, setClick] = useState(false)
@@ -27,7 +26,7 @@ export default function AddImage(props) {
   }) 
 
   return (
-    <div className='outline cursor-pointer'>
+    <div className='border-[3px] border-gray-800 p-2 cursor-pointer w-full'>
           
       <section className='dropzone-Image'> 
         <div {...getRootProps()}>

@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import Addvideo from './Addvideo'
+import Addvideo from './AddVideo'
+import { AuthContext } from '../Contexts/AuthContext'
 
 export default function Lesson() {
     // 64f0b458ea1957fc5dc30366
@@ -9,6 +10,7 @@ export default function Lesson() {
     const params = useParams()
     const {id} = params
     const navigate = useNavigate()
+    const {auth} = useContext(AuthContext)
 
     const createLesson = async (e) => {
         e.preventDefault()
@@ -16,10 +18,10 @@ export default function Lesson() {
             const Lessondata = new FormData()
             Lessondata.append("title", title)
             Lessondata.append("video", video)
-            const response = await fetch(`http://localhost:5000/api/courses/module/lesson/create-Lesson/${id}`, {
+            const response = await fetch(`http://10.3.3.200:5000/api/courses/module/lesson/create-Lesson/${id}`, {
             method: 'POST',
             headers: {
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGViNWM0ZWJlOWI4ZDU0YThmYjFjYjAiLCJpYXQiOjE2OTM0ODI4MTIsImV4cCI6MTY5NDA4NzYxMn0.mQg_7x_YFvT6cRZdOnfxA8XjJExAMF7PGikAPwysfmM'
+                'Authorization': `${auth?.token}`
             },
             body: Lessondata
             })
@@ -36,12 +38,12 @@ export default function Lesson() {
 
 
     return (
-    <div className='bg-gray-800 text-white'>
-        <h1 className='text-center pt-5 pb-5'>Create a Lesson</h1>
+    <div className='bg-[rgb(19,24,32)] text-white font-montserrat flex flex-col items-center h-screen'>
+        <h1 className='text-center pt-5 pb-5 font-bold text-2xl mt-2'>Create a Lesson</h1>
         <form className='flex flex-col justify-center items-center gap-9'>
-            <input type="text" placeholder='title' value={title} onChange={(e) => {setTitle(e.target.value)}} className='text-white bg-gray-800'/>
+            <input type="text" placeholder='title' value={title} onChange={(e) => {setTitle(e.target.value)}} className='text-white bg-gray-800 w-full indent-2 py-2'/>
             <Addvideo video={video} setvideo={setvideo}/>
-            <button onClick={createLesson}>Add Description</button>
+            <button onClick={createLesson} className="bg-green-400 px-4 py-3 rounded-lg">Add Description</button>
         </form>
     </div>
   )

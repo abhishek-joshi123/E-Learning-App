@@ -44,5 +44,5 @@ app.use('/api/courses/module/assessment/response', ResponseRoute)
 
 
 app.listen(port, () => {
-    console.log(`Ajio backend is running at localhost:${port}`);
+    console.log(` backend is running at localhost:${port}`);
 })

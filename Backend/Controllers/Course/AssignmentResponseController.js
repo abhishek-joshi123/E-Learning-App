@@ -23,8 +23,9 @@ import AssignmentModel from "../../Schemas/CourseSchemas/AssignmentModel.js"
                 message: 'Assessment url not found'
             })
         }
+        
         const assetURL = result.secure_url
-        const assetPublicId = result.public_id
+        const assetPublicId = result.public_id 
 
         const assignment = {
             fileName : originalname, 

@@ -7,11 +7,11 @@ const UserSchema = new mongoose.Schema({
         required:true,
         trim:true
     },
-    email: { 
+    email: {  
         type:String,
         required:true,
         unique:true 
-    },
+    }, 
     password: {
         type: String,
         required:true
@@ -19,10 +19,24 @@ const UserSchema = new mongoose.Schema({
     role: {
         type: Number,
         default: 0
+    },
+    image: {
+        fileName: {
+            type: String,
+        },
+        fileSize: {
+            type: Number,
+        },
+        assetURL: {
+            type: String,
+        },
+        assetPublicId: {
+            type: String
+        }
     }
 
 },{
-    timestamps:true     // this will store the time at which user created account....
+    timestamps:true  
 })
 
 export default mongoose.model('users', UserSchema)

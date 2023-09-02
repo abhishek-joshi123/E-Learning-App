@@ -59,7 +59,7 @@ export const createCourseController = async(req, res) => {
 
 export const getCoursesController = async(req, res) => {
     try {
-        const Courses = await CourseModel.find({})
+        const Courses = await CourseModel.find({}).populate('instructor')
         res.status(200).send({
             success: true,
             message: `${Courses.length} Course found`,
